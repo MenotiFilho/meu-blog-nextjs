@@ -10,7 +10,9 @@ export default async function PostPage({
 }: {
   params: { slug: string };
 }) {
-  const post = await getPostBySlug(params.slug);
+  const awaitedParams = await params;
+  const { slug } = awaitedParams;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound(); // Renderiza a página 404 do Next.js
