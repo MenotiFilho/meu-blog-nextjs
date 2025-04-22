@@ -3,7 +3,10 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "ICKFJ",
@@ -16,24 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${inter.className} bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}
-      >
-        {" "}
-        {/* Estilos base para body */}
-        <div className="flex flex-col min-h-screen">
-          {" "}
-          {/* Container principal para layout sticky footer */}
+    <html lang="pt-BR" className={inter.className}>
+      <body className={`${inter.className} `}>
+        <div className="flex flex-col min-h-screen bg-black text-amber-100">
           <Header />
-          <main className="flex-grow container mx-auto px-4 py-8">
-            {" "}
-            {/* 3. Envolver 'children' com 'main' e adicionar padding */}
-            {children}{" "}
-            {/* 'children' representa o conteúdo da página atual (ex: page.tsx ou posts/[slug]/page.tsx) */}
+          <main className="flex-grow container mx-auto px-4 py-2">
+            {children}
           </main>
-          {/* Você pode adicionar um Footer aqui também, se desejar */}
-          {/* <Footer /> */}
         </div>
       </body>
     </html>
