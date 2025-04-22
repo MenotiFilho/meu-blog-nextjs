@@ -48,6 +48,7 @@ export default function Header() {
         </div>
 
         {/* Botão menu mobile */}
+        {/*Alterar para usar o roundedbutton*/}
         <div className="sm:hidden flex items-center">
           <div className="border-amber-100 border-1 w-2/5 min-w-fit rounded-full p-1">
             <button
