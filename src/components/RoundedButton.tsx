@@ -4,28 +4,28 @@ import Link from "next/link";
 interface RoundedButtonProps {
   href: string;
   label: string;
-  parentGroup?: boolean; // nova prop
+  parentGroup?: boolean;
+  as?: "a" | "div"; // nova prop
 }
 
 export default function RoundedButton({
   href,
   label,
   parentGroup,
+  as = "a", // padrão é <a>, como antes
 }: RoundedButtonProps) {
-  return (
-    <Link
-      href={href}
-      className={`
-          group flex justify-between items-center w-full rounded-full p-0.5 text-xl border-1 border-amber-100 font-bold
-          transition-colors
-          ${
-            parentGroup
-              ? // Use group-hover do pai, mas mantenha group para o próprio hover também
-                "group-hover:text-black group-hover:bg-amber-100 group-hover:border-black"
-              : "hover:text-black hover:bg-amber-100 hover:border-black"
-          }
-        `}
-    >
+  const className = `
+    group flex justify-between items-center w-full rounded-full p-0.5 text-xl border-1 border-amber-100 font-bold
+    transition-colors
+    ${
+      parentGroup
+        ? "group-hover:text-black group-hover:bg-amber-100 group-hover:border-black"
+        : "hover:text-black hover:bg-amber-100 hover:border-black"
+    }
+  `;
+
+  const content = (
+    <>
       <p
         className={`
           ml-3 font-light transition-colors
@@ -50,6 +50,16 @@ export default function RoundedButton({
       >
         <ArrowRight size={22} />
       </div>
+    </>
+  );
+
+  if (as === "div") {
+    return <div className={className}>{content}</div>;
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {content}
     </Link>
   );
 }
