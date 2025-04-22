@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={inter.className}>
       <body className={`${inter.className} `}>
-        <div className="flex flex-col min-h-screen bg-black text-amber-100">
+        <div className="flex flex-col min-h-screen bg-neutral-900 text-amber-100">
           <Header />
-          <main className="flex-grow container mx-auto px-4 py-2">
+          <main className="flex-grow container mx-auto px-4 pt-5">
             {children}
           </main>
         </div>

@@ -81,3 +81,17 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     return null; // Retorna null em caso de erro de fetch/parse
   }
 }
+//funcao para buscar o ultimo post
+export async function getLatestPost(): Promise<Post | null> {
+  const apiUrl = `${STRAPI_API_URL}/posts?sort=publishedAt:desc&pagination[limit]=1&populate=coverImage`;
+
+  try {
+    const res = await fetch(apiUrl, { cache: "no-store" });
+    if (!res.ok) return null;
+    const response: StrapiApiResponse<Post> = await res.json();
+    return response.data && response.data.length ? response.data[0] : null;
+  } catch (err) {
+    console.error("Erro ao buscar o último post:", err);
+    return null;
+  }
+}

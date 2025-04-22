@@ -41,7 +41,7 @@ export default async function PostPage({
 
   return (
     // Aplicar classes 'prose' do @tailwindcss/typography para estilizar o conteúdo Markdown
-    <article className="prose prose-stone dark:prose-invert max-w-3xl mx-auto px-4 py-8 md:py-12">
+    <article className="prose prose-stone dark:prose-invert max-w-3xl mx-auto px-4 pt-5 ">
       {/* Título do Post */}
       <h1 className="mb-2">{post.title}</h1>
 
