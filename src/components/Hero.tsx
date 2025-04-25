@@ -19,7 +19,7 @@ export default function Hero() {
           <RoundedButton href="/about" label="About" />
         </div>
       </div>
-      <div className="h-32 w-32 bg-white rounded-full hidden lg:block self-start mt-2"></div>
+      {/*<div className="h-32 w-32 bg-white rounded-full hidden lg:block self-start mt-2"></div>*/}
     </div>
   );
 }

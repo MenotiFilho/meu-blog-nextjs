@@ -19,7 +19,7 @@ export default function Header() {
 
           {/* Portfolio/Blog só no desktop/tablet */}
           <div
-            className="border-amber-100 border-1 w-2/5 min-w-fit rounded-full p-1 flex gap-0.5
+            className="border-amber-100 border-1 w-2/5 min-w-fit rounded-full p-1  gap-0.5
                           hidden sm:flex"
           >
             <RoundedButton href="/portfolio" label="Portfolio" />
@@ -28,7 +28,7 @@ export default function Header() {
         </div>
 
         {/* Social só no desktop/tablet */}
-        <div className="flex gap-0.5 hidden sm:flex">
+        <div className=" gap-0.5 hidden sm:flex">
           <Link
             href="https://github.com/MenotiFilho"
             className="border-1 rounded-full p-2 hover:text-black hover:bg-amber-100 transition-colors"
