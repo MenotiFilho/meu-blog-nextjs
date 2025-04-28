@@ -3,6 +3,7 @@ import { GithubLogo, LinkedinLogo, List } from "@phosphor-icons/react/dist/ssr";
 import RoundedButton from "./RoundedButton";
 import Link from "next/link";
 import { useState } from "react";
+import { Envelope } from "@phosphor-icons/react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -44,6 +45,14 @@ export default function Header() {
             rel="noopener noreferrer"
           >
             <LinkedinLogo size={22} weight="fill" />
+          </Link>
+          <Link
+            href={"mailto:menotimfilho@gmail.com"}
+            className="border-1 rounded-full p-2 hover:text-black hover:bg-amber-100 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Envelope size={22} />
           </Link>
         </div>
 
