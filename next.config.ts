@@ -4,13 +4,11 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http", // ou 'https' se seu Strapi usa HTTPS
-        hostname: "localhost", // Domínio onde seu Strapi está rodando
-        port: "1337", // Porta do Strapi
-        pathname: "/uploads/**", // Caminho padrão de uploads do Strapi
+        protocol: "http", // Protocolo usado no Strapi
+        hostname: "localhost", // Hostname do Strapi
+        port: "1337", // Porta onde o Strapi está rodando
+        pathname: "/uploads/**", // Caminho das imagens
       },
-      // Adicione aqui outros domínios se você hospedar o Strapi em produção
-      // Ex: { protocol: 'https', hostname: 'your-strapi-domain.com', pathname: '/uploads/**' }
     ],
   },
 };

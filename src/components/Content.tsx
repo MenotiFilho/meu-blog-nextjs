@@ -1,6 +1,6 @@
 import React from "react";
-import RoundedButton from "./RoundedButton";
 import LatestPost from "./LatestPost";
+import ProjetosCard from "./ProjetosCard";
 
 export default function Content() {
   return (
@@ -9,9 +9,7 @@ export default function Content() {
         <LatestPost />
       </div>
 
-      <div className="flex flex-col w-full lg:w-2/3 p-5 bg-yellow-600 rounded-3xl h-96">
-        <RoundedButton href="/Projetos" label="Projetos" />
-      </div>
+      <ProjetosCard />
     </div>
   );
 }

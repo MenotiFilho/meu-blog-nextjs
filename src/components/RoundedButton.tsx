@@ -6,6 +6,16 @@ interface RoundedButtonProps {
   label: string;
   parentGroup?: boolean;
   as?: "a" | "div"; // nova prop
+  defaultTextColor?: string; // Cor padrão do texto
+  defaultBgColor?: string; // Cor padrão do fundo
+  hoverTextColor?: string; // Cor do texto no hover
+  hoverBgColor?: string; // Cor do fundo no hover
+  defaultBorderColor?: string; // Cor padrão da borda
+  hoverBorderColor?: string; // Cor da borda no hover
+  iconColor?: string; // Cor padrão do ícone
+  hoverIconColor?: string; // Cor do ícone no hover
+  iconBgColor?: string; // Cor padrão do fundo do ícone
+  hoverIconBgColor?: string; // Cor do fundo do ícone no hover
 }
 
 export default function RoundedButton({
@@ -13,14 +23,25 @@ export default function RoundedButton({
   label,
   parentGroup,
   as = "a", // padrão é <a>, como antes
+  defaultTextColor = "text-amber-100", // Cor padrão do texto
+  defaultBgColor = "bg-transparent", // Fundo padrão
+  hoverTextColor = "text-black", // Cor do texto no hover
+  hoverBgColor = "bg-amber-100", // Fundo no hover
+  defaultBorderColor = "border-amber-100", // Cor da borda padrão
+  hoverBorderColor = "border-black", // Cor da borda no hover
+  iconColor = "text-black", // Cor padrão do ícone
+  hoverIconColor = "text-amber-100", // Cor do ícone no hover
+  iconBgColor = "bg-amber-100", // Cor padrão do fundo do ícone
+  hoverIconBgColor = "bg-black", // Cor do fundo do ícone no hover
 }: RoundedButtonProps) {
   const className = `
-    group flex justify-between items-center w-full rounded-full p-0.5 text-xl border-1 border-amber-100 font-bold
-    transition-colors
+    group flex justify-between items-center w-full rounded-full p-0.5 text-xl font-bold
+    transition-colors border-2
+    ${defaultTextColor} ${defaultBgColor} ${defaultBorderColor}
     ${
       parentGroup
-        ? "group-hover:text-black group-hover:bg-amber-100 group-hover:border-black"
-        : "hover:text-black hover:bg-amber-100 hover:border-black"
+        ? `group-hover:${hoverTextColor} group-hover:${hoverBgColor} group-hover:${hoverBorderColor}`
+        : `hover:${hoverTextColor} hover:${hoverBgColor} hover:${hoverBorderColor}`
     }
   `;
 
@@ -31,8 +52,8 @@ export default function RoundedButton({
           ml-3 font-light transition-colors
           ${
             parentGroup
-              ? "group-hover:text-black group-hover:font-bold"
-              : "hover:text-black hover:font-bold"
+              ? `group-hover:${hoverTextColor} group-hover:font-bold`
+              : `hover:${hoverTextColor} hover:font-bold`
           }
         `}
       >
@@ -40,15 +61,23 @@ export default function RoundedButton({
       </p>
       <div
         className={`
-          flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-black transition-colors mr-0.5
+          flex items-center justify-center w-6 h-6 rounded-full transition-colors mr-0.5
+          ${iconBgColor}
           ${
             parentGroup
-              ? "group-hover:bg-black group-hover:text-amber-100"
-              : "hover:bg-black hover:text-amber-100"
+              ? `group-hover:${hoverIconBgColor}`
+              : `hover:${hoverIconBgColor}`
           }
         `}
       >
-        <ArrowRight size={22} />
+        <ArrowRight
+          size={22}
+          className={`transition-colors ${iconColor} ${
+            parentGroup
+              ? `group-hover:${hoverIconColor}`
+              : `hover:${hoverIconColor}`
+          }`}
+        />
       </div>
     </>
   );

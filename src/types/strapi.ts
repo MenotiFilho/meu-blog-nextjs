@@ -1,5 +1,4 @@
 // Interface para os formatos de mídia (thumbnail, small, etc.)
-// Esta interface parece correta com base no JSON
 export interface StrapiMediaFormat {
   name: string;
   hash: string;
@@ -13,8 +12,50 @@ export interface StrapiMediaFormat {
   url: string; // URL relativa do formato específico
 }
 
+// Interface para o objeto de mídia usado em imagens
+export interface StrapiMedia {
+  id: number;
+  documentId: string;
+  name: string;
+  alternativeText: string | null;
+  caption: string | null;
+  width: number;
+  height: number;
+  formats?: {
+    thumbnail?: StrapiMediaFormat;
+    small?: StrapiMediaFormat;
+    medium?: StrapiMediaFormat;
+    large?: StrapiMediaFormat;
+  };
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: unknown | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interface para uma entrada de portfólio
+export interface PortfolioEntry {
+  id: number;
+  documentId: string;
+  Title: string;
+  Tecnologias: string;
+  Resumo: string;
+  LinkGit: string;
+  LInkProduction: string;
+  Image?: StrapiMedia[]; // Relacionamento com múltiplas mídias
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
 // Interface para o objeto coverImage como ele aparece no JSON
-// (Combina ID, atributos e formatos diretamente)
 export interface CoverImageData {
   id: number;
   documentId: string; // Adicionado baseado no JSON
@@ -24,7 +65,6 @@ export interface CoverImageData {
   width: number;
   height: number;
   formats: {
-    // Objeto contendo os diferentes tamanhos/formatos
     thumbnail?: StrapiMediaFormat;
     small?: StrapiMediaFormat;
     medium?: StrapiMediaFormat;
@@ -43,7 +83,7 @@ export interface CoverImageData {
   publishedAt: string; // Adicionado baseado no JSON
 }
 
-// --- Atualizar a Interface Post ---
+// Interface para um Post
 export interface Post {
   id: number;
   documentId: string;
@@ -57,7 +97,7 @@ export interface Post {
   coverImage: CoverImageData | null;
 }
 
-// --- Interfaces Meta e StrapiApiResponse permanecem as mesmas ---
+// Interfaces Meta e StrapiApiResponse
 export interface PaginationMeta {
   page: number;
   pageSize: number;
@@ -69,7 +109,15 @@ export interface Meta {
   pagination: PaginationMeta;
 }
 
+// Interface genérica para resposta do Strapi
 export interface StrapiApiResponse<T> {
   data: T[];
-  meta: Meta;
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
 }

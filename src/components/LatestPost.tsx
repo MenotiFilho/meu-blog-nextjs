@@ -22,13 +22,13 @@ export default async function LatestPost() {
   return (
     <Link
       href={`/posts/${latestPost?.slug}`}
-      className="group flex flex-col w-full p-5 bg-black border-1 rounded-3xl h-96"
+      className="group flex flex-col w-full p-5 bg-black  rounded-3xl h-96"
     >
       <RoundedButton
         href={`/posts/${latestPost?.slug}`}
         label="Último post"
         parentGroup
-        as="div" // aqui está a mágica — apenas estilo, sem <a>
+        as="div"
       />
 
       {imageUrl && (
